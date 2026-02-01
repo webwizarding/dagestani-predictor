@@ -1,2 +1,4 @@
 {"fighter_id": "fighterA", "name": "Fighter A", "height": "5' 11\"", "reach": "72\"", "stance": "Orthodox", "dob": "Jan 1, 1990", "record": "Record: 10-1-0", "url": "http://ufcstats.com/fighter-details/fighterA"}
 {"fighter_id": "fighterB", "name": "Fighter B", "height": "5' 10\"", "reach": "70\"", "stance": "Southpaw", "dob": "Jan 1, 1991", "record": "Record: 8-2-0", "url": "http://ufcstats.com/fighter-details/fighterB"}
+{"fighter_id": "fighterC", "name": "Fighter C", "height": "6' 0\"", "reach": "74\"", "stance": "Switch", "dob": "Jan 1, 1988", "record": "Record: 12-4-0", "url": "http://ufcstats.com/fighter-details/fighterC"}
+{"fighter_id": "fighterD", "name": "Fighter D", "height": "5' 9\"", "reach": "69\"", "stance": "Orthodox", "dob": "Jan 1, 1992", "record": "Record: 7-3-0", "url": "http://ufcstats.com/fighter-details/fighterD"}

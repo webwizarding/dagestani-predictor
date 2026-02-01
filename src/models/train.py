@@ -38,7 +38,9 @@ def train_model(data_path: Path, model_type: str, output_dir: Path = ARTIFACTS_D
     y = df["label"].astype(int)
 
     config = ModelConfig()
-    test_size = min(config.test_size_recent, len(df) // 5)
+    if len(df) < 2:
+        raise ValueError("Need at least 2 fights to train; try scraping more data.")
+    test_size = min(config.test_size_recent, max(1, len(df) // 5))
     train_df = df.iloc[:-test_size]
     test_df = df.iloc[-test_size:]
 

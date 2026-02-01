@@ -20,12 +20,21 @@ def _read_table(path: Path) -> pd.DataFrame:
 
 def _find_fighter_id(fighters: pd.DataFrame, name: str) -> str:
     name_norm = name.strip().lower()
-    matches = fighters[fighters["name"].str.lower() == name_norm]
-    if matches.empty:
-        raise ValueError(f"fighter not found: {name}")
-    if len(matches) > 1:
+    exact = fighters[fighters["name"].str.lower() == name_norm]
+    if len(exact) == 1:
+        return exact.iloc[0]["fighter_id"]
+    if len(exact) > 1:
         raise ValueError(f"multiple fighters found for: {name}")
-    return matches.iloc[0]["fighter_id"]
+
+    contains = fighters[fighters["name"].str.lower().str.contains(name_norm, na=False)]
+    if len(contains) == 1:
+        return contains.iloc[0]["fighter_id"]
+    if len(contains) > 1:
+        options = ", ".join(sorted(contains["name"].head(5).tolist()))
+        raise ValueError(f"multiple fighters match '{name}': {options}")
+
+    options = ", ".join(sorted(fighters["name"].dropna().head(5).tolist()))
+    raise ValueError(f"fighter not found: {name}. Sample available: {options}")
 
 
 def predict_matchup(
